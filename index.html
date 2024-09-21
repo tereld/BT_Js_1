@@ -6,18 +6,37 @@
     <title>Trung bình cộng 3 số</title>
 </head>
 <body>
-    <label for="toan">Điểm Toán:</label>
+    <label for="vatLy">Điểm Lý:</label>
     <br>
-    <input type="number" id="toan"><br>
-    <label for="ly">Điểm Lý:</label>
+    <input type="number" id="vatLy"><br>
+    <label for="hoaHoc">Điểm Hóa:</label>
     <br>
-    <input type="number" id="ly"><br>
-    <label for="hoa">Điểm Hóa:</label>
+    <input type="number" id="hoaHoc"><br>
+    <label for="sinhHoc">Điểm Sinh:</label>
     <br>
-    <input type="number" id="hoa"><br>
+    <input type="number" id="sinhHoc"><br>
     <br>
     <button onclick="tinhDiemTrungBinh()">Tính điểm trung bình</button>
-    <h1 id="ketQua"></h1>
-    <script src="main.js"></script>
+    <h1 id="result"></h1>
+    <script>
+        function tinhDiemTrungBinh() {
+            const vatLy = parseFloat(document.getElementById('vatLy').value);
+            const hoaHoc = parseFloat(document.getElementById('hoaHoc').value);
+            const sinhHoc = parseFloat(document.getElementById('sinhHoc').value);
+
+            if (isNaN(vatLy) || isNaN(hoaHoc) || isNaN(sinhHoc)) {
+                alert('Vui lòng nhập đầy đủ điểm cho tất cả các môn.');
+                return;
+            }
+
+            const tongDiem = vatLy + hoaHoc + sinhHoc;
+            const diemTrungBinh = tongDiem / 3;
+
+            document.getElementById('result').innerHTML = `
+                <p>Tổng điểm: ${tongDiem}</p>
+                <p>Điểm trung bình: ${diemTrungBinh.toFixed(2)}</p>
+            `;
+        }
+    </script>
 </body>
 </html>
